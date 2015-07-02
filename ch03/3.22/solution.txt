@@ -1,0 +1,7 @@
+3.22 (a) Let E be our extended stack. We will implement E with two stacks. One stack, which
+we’ll call S, is used to keep track of the Push and Pop operations, and the other,M, keeps
+track of the minimum. To implement Push(X,E),we performPush(X,S). If X is smaller
+than or equal to the top element in stack M, then we also perform Push(X,M).To implement Pop(E),we perform Pop(S).If X is equal to the top element in stack M, then we also
+Pop(M). FindMin(E)is performed by examining the top of M. All these operations are
+clearly O(1).
+
