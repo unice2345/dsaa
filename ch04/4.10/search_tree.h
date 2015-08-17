@@ -13,6 +13,7 @@ Position FindMin( SearchTree T );
 Position FindMax( SearchTree T );
 SearchTree Insert( ElementType X, SearchTree T);
 SearchTree Delete( ElementType X, SearchTree T);
+SearchTree Delete2( ElementType X, SearchTree T); // 4.13.a
 ElementType Retrieve( SearchTree T );
 
 void Traverse( SearchTree T );

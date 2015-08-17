@@ -18,7 +18,8 @@ int main()
 	Traverse( T );
 	printf("\n");
 
-	T = Delete( X, T );	
+	//T = Delete( X, T );	
+	T = Delete2( X, T );	
 	Traverse( T );
 	printf("\n");
 

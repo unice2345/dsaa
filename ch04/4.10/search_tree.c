@@ -70,6 +70,7 @@ Position FindMax( SearchTree T )
 	}
 	return T;
 }
+
 SearchTree Delete( ElementType X, SearchTree T)
 {
 	Position TmpCell;
@@ -96,6 +97,31 @@ SearchTree Delete( ElementType X, SearchTree T)
 				T->Right = Delete( T->Element, T->Right );
 				return T;
 			}
+		}
+	}
+
+	return T;
+}
+
+SearchTree Delete2( ElementType X, SearchTree T) // 4.13.a
+{
+	Position TmpCell;
+	
+	if( T == NULL )
+		return NULL;
+	if( X < T->Element )
+		T->Left = Delete( X, T->Left );
+	else if( X > T->Element )
+		T->Right = Delete( X, T->Right );
+	else { // X == T->Element
+		TmpCell = FindMax( T->Left );
+		if( TmpCell != NULL ) {
+			T->Element = TmpCell->Element;
+			T->Left = Delete( T->Element, T->Left );
+		} else {
+			TmpCell = T;
+			T = T->Right;
+			free( TmpCell );
 		}
 	}
 
