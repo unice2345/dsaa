@@ -16,5 +16,10 @@ SearchTree Delete( ElementType X, SearchTree T);
 SearchTree Delete2( ElementType X, SearchTree T); // 4.13.a
 ElementType Retrieve( SearchTree T );
 
+/* 4.28 */
+int CountNodes( SearchTree T );
+int CountLeaves( SearchTree T );
+int CountFull( SearchTree T );
+
 void Traverse( SearchTree T );
 #endif // _SEARCH_TREE_H

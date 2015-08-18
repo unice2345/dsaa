@@ -25,9 +25,14 @@ int main()
 
 	printf("Max value = %d\n", Retrieve( FindMax( T ) ) );
 	
+	printf("Nodes are %d\n", CountNodes( T ) );
+	printf("Leaves are %d\n", CountLeaves( T ) );
+	printf("Full Nodes are %d\n", CountFull( T ) );
+
 	T = Find( 5, T );
 	if( T )
 		printf("5 is found\n");
 	else
 		printf("5 is not found\n");
+
 }

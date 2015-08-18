@@ -134,6 +134,42 @@ ElementType Retrieve( SearchTree T )
 		return T->Element;
 }
 
+/* 4.28 */
+int CountNodes( SearchTree T )
+{
+	if( T == NULL )
+		return 0;
+	else
+		return 1 + CountNodes( T->Left ) + CountNodes( T->Right );
+}
+
+int CountLeaves( SearchTree T )
+{
+	if( T == NULL )
+		return 0;
+	else {
+		if( T->Left == NULL && T->Right == NULL )
+			return 1;
+		else
+			return CountLeaves( T->Left ) 
+				+ CountLeaves( T->Right );
+	}
+}
+
+int CountFull( SearchTree T )
+{
+	if( T == NULL )
+		return 0;
+	else {
+		if( T->Left && T->Right )
+			return 1 + CountFull( T->Left )
+				+ CountFull( T->Right );
+		else	
+			return  CountFull( T->Left )
+				+ CountFull( T->Right );
+	}
+}
+
 void Traverse( SearchTree T )
 {
 	if( T != NULL ) {
