@@ -2,6 +2,11 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+static int RandInt(int l, int u)
+{
+ 	return random() % (u - l + 1) + l;
+}
+
 struct TreeNode
 {
 	ElementType Element;
@@ -170,11 +175,40 @@ int CountFull( SearchTree T )
 	}
 }
 
+/* 4.29 */
+SearchTree MakeRandomTree( SearchTree T, int l, int u )
+{
+	if( l > u )
+		return NULL;
+	if( T == NULL ) {
+		T = malloc( sizeof( SearchTree ) );
+		if( !T ) {
+			printf("malloc failed!\n");
+			return NULL;
+		}		
+		
+		T->Element = RandInt( l, u );
+		T->Left = MakeRandomTree( T->Left, l, T->Element - 1 );
+		T->Right = MakeRandomTree( T->Right, T->Element + 1, u ); 
+	}
+	
+	return T;
+}
+
 void Traverse( SearchTree T )
 {
 	if( T != NULL ) {
 		printf("%d ", T->Element);
 		Traverse(T->Left);
 		Traverse(T->Right);
+	}
+}
+
+void TraverseInOrder( SearchTree T )
+{
+	if( T != NULL ) {
+		TraverseInOrder(T->Left);
+		printf("%d ", T->Element);
+		TraverseInOrder(T->Right);
 	}
 }

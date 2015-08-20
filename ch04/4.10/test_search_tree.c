@@ -29,10 +29,14 @@ int main()
 	printf("Leaves are %d\n", CountLeaves( T ) );
 	printf("Full Nodes are %d\n", CountFull( T ) );
 
+	TraverseInOrder( T );
+	printf("\n");
+
 	T = Find( 5, T );
 	if( T )
 		printf("5 is found\n");
 	else
 		printf("5 is not found\n");
+
 
 }

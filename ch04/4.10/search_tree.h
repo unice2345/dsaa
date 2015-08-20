@@ -21,5 +21,9 @@ int CountNodes( SearchTree T );
 int CountLeaves( SearchTree T );
 int CountFull( SearchTree T );
 
+/* 4.29 */
+SearchTree MakeRandomTree( SearchTree T, int l, int u );
+
 void Traverse( SearchTree T );
+void TraverseInOrder( SearchTree T );
 #endif // _SEARCH_TREE_H
