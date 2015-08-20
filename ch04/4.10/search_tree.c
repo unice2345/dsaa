@@ -195,6 +195,18 @@ SearchTree MakeRandomTree( SearchTree T, int l, int u )
 	return T;
 }
 
+/* 4.32 */
+void PrintRange( SearchTree T, int l, int u )
+{
+	if( T == NULL )
+		return;
+	if( T->Element >= l && T->Element <= u) {
+		printf("%d ", T->Element);
+	}
+	PrintRange( T->Left, l, u);
+	PrintRange( T->Right, l, u);
+}
+
 void Traverse( SearchTree T )
 {
 	if( T != NULL ) {
