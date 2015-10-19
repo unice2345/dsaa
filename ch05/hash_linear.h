@@ -10,6 +10,7 @@ typedef unsigned int Position;
 HashTable InitializeTable( int TableSize );
 Position Find(ElementType Key, HashTable H);
 void Insert(ElementType Key, HashTable H);
+HashTable Rehash(HashTable H);
 
 void PrintHashTable(HashTable H);
 #endif //_HASH_LINEAR_H

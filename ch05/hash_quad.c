@@ -2,9 +2,9 @@
 #include <stdio.h>
 #include <malloc.h>
 
-int Hash(int X)
+int Hash(int X, int TableSize)
 {
-	return X % 10;
+	return X % TableSize;
 }
 
 enum KindOfEntry { Legitimate, Empty, Deleted };
@@ -54,7 +54,7 @@ Position Find(ElementType Key, HashTable H)
 	int CollisionNum;
 
 	CollisionNum = 0;	
-	P = Hash( Key );
+	P = Hash( Key, H->TableSize );
 	while( H->Cells[P].Info != Empty &&
 		H->Cells[P].Element != Key ) {
 		P += 2*++CollisionNum - 1;
@@ -74,6 +74,28 @@ void Insert(ElementType Key, HashTable H)
 		H->Cells[P].Info = Legitimate;
 		H->Cells[P].Element = Key; 
 	}
+}
+
+HashTable Rehash(HashTable H)
+{
+	int i;
+	int TableSize;
+	struct HashEntry* Cells;
+
+	TableSize = H->TableSize;
+	Cells = H->Cells;
+
+	H = InitializeTable( TableSize * 2 );	
+	
+	for(i = 0; i < TableSize; i++) {
+		if(Cells[i].Info == Legitimate) {
+			Insert(Cells[i].Element, H);
+		}
+	}	
+
+	free( Cells );
+
+	return H;
 }
 
 void PrintHashTable(HashTable H)
