@@ -83,6 +83,8 @@ HashTable Rehash(HashTable H)
 	TableSize = H->TableSize;
 	Cells = H->Cells;
 
+	free( H );
+
 	H = InitializeTable( TableSize * 2 );	
 	
 	for(i = 0; i < TableSize; i++) {
